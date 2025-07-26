@@ -1,14 +1,23 @@
 extends CharacterBody3D
-
+class_name Player
 
 const SPEED = 5.0
 
+@export var max_hitpoints := 100
 @export var jump_height: float = 1.0
 @export var fall_multiplier: float = 2.0
 
-var mouse_motion := Vector2.ZERO
 @onready var camera_pivot: Node3D = $CameraPivot
+
+var mouse_motion := Vector2.ZERO
 var gravity3d = ProjectSettings.get_setting("physics/3d/default_gravity")
+var hitpoints: int = max_hitpoints:
+	set(value):
+		hitpoints = value
+		print(hitpoints)
+		if hitpoints <= 0:
+			get_tree().quit()
+		
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED # When player loads in, set input mode for the mouse. Mouse is invisible and any code that listens to mouse will always listen to it
