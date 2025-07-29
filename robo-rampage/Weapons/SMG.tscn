@@ -29,6 +29,7 @@ size = Vector3(0.1, 0.1, 0.1)
 [node name="SMG" node_paths=PackedStringArray("weapon_mesh", "muzzle_flash") instance=ExtResource("1_hrtej")]
 weapon_mesh = NodePath("SMG")
 muzzle_flash = NodePath("MuzzleFlash")
+automatic = true
 
 [node name="SMG" parent="." index="1" instance=ExtResource("2_ops1r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.357988, -0.311217, -0.908373)
@@ -61,7 +62,7 @@ layers = 2
 layers = 2
 
 [node name="MuzzleFlash" type="GPUParticles3D" parent="." index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.276246, -0.166164, -2.0663)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.276246, -0.227094, -1.99747)
 layers = 2
 material_override = SubResource("StandardMaterial3D_ops1r")
 cast_shadow = 0
