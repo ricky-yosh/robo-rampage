@@ -1,10 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://0qebijytlncx"]
+[gd_scene load_steps=15 format=3 uid="uid://0qebijytlncx"]
 
 [ext_resource type="Script" uid="uid://hjledt70ytnf" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="Script" uid="uid://e7w1ivo0oyhy" path="res://Player/smooth_camera.gd" id="2_4ntmi"]
 [ext_resource type="Script" uid="uid://dkf4ns1quc1w4" path="res://Player/crosshair.gd" id="3_btcbx"]
 [ext_resource type="PackedScene" uid="uid://biyned5pn08jw" path="res://Weapons/Rifle.tscn" id="3_fhl08"]
+[ext_resource type="Script" uid="uid://daofnlfulj3kl" path="res://Player/weapon_handler.gd" id="4_od3ui"]
 [ext_resource type="Texture2D" uid="uid://dbo4p5nb0c0oo" path="res://Player/damage.png" id="5_k53q1"]
+[ext_resource type="PackedScene" uid="uid://cg14f375hk5px" path="res://Weapons/SMG.tscn" id="5_vtle1"]
+[ext_resource type="Script" uid="uid://7o6e8ghe0moi" path="res://Player/ammo_handler.gd" id="6_00tjw"]
 [ext_resource type="PackedScene" uid="uid://5k4p4mct8b1h" path="res://Player/game_over_menu.tscn" id="6_fhl08"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_hvfyp"]
@@ -93,19 +96,6 @@ script = ExtResource("2_4ntmi")
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="CameraPivot/SmoothCamera"]
 remote_path = NodePath("../../../SubViewportContainer/SubViewport/WeaponCamera")
 
-[node name="Rifle" parent="CameraPivot/SmoothCamera" instance=ExtResource("3_fhl08")]
-
-[node name="CenterContainer" type="CenterContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Crosshair" type="Control" parent="CenterContainer"]
-layout_mode = 2
-script = ExtResource("3_btcbx")
-
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
@@ -125,6 +115,33 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 cull_mask = 2
 fov = 40.0
 
+[node name="WeaponHandler" type="Node3D" parent="SubViewportContainer/SubViewport/WeaponCamera" node_paths=PackedStringArray("weapon_1", "weapon_2")]
+script = ExtResource("4_od3ui")
+weapon_1 = NodePath("Rifle")
+weapon_2 = NodePath("SMG")
+
+[node name="Rifle" parent="SubViewportContainer/SubViewport/WeaponCamera/WeaponHandler" node_paths=PackedStringArray("ammo_handler") instance=ExtResource("3_fhl08")]
+ammo_handler = NodePath("../../AmmoHandler")
+
+[node name="SMG" parent="SubViewportContainer/SubViewport/WeaponCamera/WeaponHandler" node_paths=PackedStringArray("ammo_handler") instance=ExtResource("5_vtle1")]
+ammo_handler = NodePath("../../AmmoHandler")
+ammo_type = 1
+
+[node name="AmmoHandler" type="Node" parent="SubViewportContainer/SubViewport/WeaponCamera"]
+script = ExtResource("6_00tjw")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Crosshair" type="Control" parent="CenterContainer"]
+layout_mode = 2
+script = ExtResource("3_btcbx")
+
 [node name="DamageTexture" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
@@ -133,6 +150,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(576, 324)
+mouse_filter = 2
 texture = ExtResource("5_k53q1")
 
 [node name="DamageAnimationPlayer" type="AnimationPlayer" parent="DamageTexture"]
@@ -145,3 +163,7 @@ autoplay = "RESET"
 [node name="GameOverMenu" parent="." instance=ExtResource("6_fhl08")]
 visible = false
 metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
