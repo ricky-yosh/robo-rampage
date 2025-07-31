@@ -10,6 +10,7 @@ const SPEED = 5.0
 @onready var camera_pivot: Node3D = $CameraPivot
 @onready var damage_animation_player: AnimationPlayer = $DamageTexture/DamageAnimationPlayer
 @onready var game_over_menu: Control = $GameOverMenu
+@onready var ammo_handler: AmmoHandler = $SubViewportContainer/SubViewport/WeaponCamera/AmmoHandler
 
 var mouse_motion := Vector2.ZERO
 var gravity3d = ProjectSettings.get_setting("physics/3d/default_gravity")
