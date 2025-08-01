@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://dluqpil7orb4p"]
+
+[ext_resource type="Material" uid="uid://cb5xhbom6i4ra" path="res://Levels/Materials/GrayMaterial.tres" id="1_8xii8"]
+[ext_resource type="Texture2D" uid="uid://cknuor2x0rooa" path="res://Levels/Materials/level-floorplan.png" id="2_k0okc"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6x3q2"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_13urm"]
+sky_material = SubResource("ProceduralSkyMaterial_6x3q2")
+
+[sub_resource type="Environment" id="Environment_6opdx"]
+background_mode = 2
+sky = SubResource("Sky_13urm")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="MainLevel" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6opdx")
+
+[node name="Room" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1.5, 10)
+flip_faces = true
+size = Vector3(8, 3, 8)
+material = ExtResource("1_8xii8")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Room"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1.764, 0, 0, 0, 1.764, 0, 0, 0, 1.764, 0, 0.1, 0)
+axis = 1
+texture = ExtResource("2_k0okc")
