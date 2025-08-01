@@ -1,7 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://dluqpil7orb4p"]
+[gd_scene load_steps=18 format=3 uid="uid://dluqpil7orb4p"]
 
 [ext_resource type="Material" uid="uid://cb5xhbom6i4ra" path="res://Levels/Materials/GrayMaterial.tres" id="1_8xii8"]
 [ext_resource type="Texture2D" uid="uid://cknuor2x0rooa" path="res://Levels/Materials/level-floorplan.png" id="2_k0okc"]
+[ext_resource type="PackedScene" uid="uid://0qebijytlncx" path="res://Player/player.tscn" id="3_6x3q2"]
+[ext_resource type="PackedScene" uid="uid://bon47drb1u4xg" path="res://Pickups/bullet_pickup.tscn" id="3_k6a8t"]
+[ext_resource type="PackedScene" uid="uid://bjd1rqrb471hk" path="res://Pickups/small_bullet_pickup.tscn" id="4_wcg7u"]
+[ext_resource type="PackedScene" uid="uid://g5x1jkdlbvta" path="res://Enemy/enemy.tscn" id="5_2clls"]
+[ext_resource type="PackedScene" uid="uid://cxxgimy7ryufa" path="res://Hazards/lava.tscn" id="7_wcg7u"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6x3q2"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -16,6 +21,32 @@ sky = SubResource("Sky_13urm")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_k6a8t"]
+vertices = PackedVector3Array(-6.5, 0.5, -12.25, -8.25, 0.5, -13.25, -8.25, 0.5, -0.5, -6.25, 0.5, -1.25, 10.5, 0.5, -13.25, 8.5, 0.5, -12.5, 8.75, 0.5, -1.75, 10.5, 0.5, -0.5, 8.25, 0.5, -1.25, 8.75, 3.5, -12, 8.75, 3.5, -10, 10.5, 3.5, -10.25, 10.5, 3.5, -13.25, -8.25, 3.5, -13.25, -6.5, 3.5, -12, -6, 3.5, -12.5, 8.25, 3.5, -12.5, -8.25, 3.5, -6.5, -6.5, 3.5, -6.25, -5.25, 0.5, -11.25, -5.25, 0.5, -2.5, 7.5, 0.5, -2.5, 7.5, 0.5, -11.25, -3, 3.5, -1.25, -2.5, 3.5, 0, -2.25, 3.5, -0.5, 10.75, 3.5, -8.25, 10.5, 3.5, -6.25, 14.75, 3.5, -6.5, 14.5, 3.5, -8.25, 10.5, 3.5, -0.5, 8.75, 3.5, -1.75, 8.25, 3.5, -1.25, 16.75, 0.5, -10.25, 16.75, 0.5, -2.5, 23.25, 0.5, -2.5, 23.25, 0.5, -10.25, 16.25, 3.5, -8.25, 16.75, 3.5, -6.25, 16.75, 0.75, 3.75, 23.25, 0.75, 3.75, 23.25, 3.5, -10.25, 16.75, 3.25, -1.96429, 23.25, 3.25, -1.85, 16.75, 3.5, -8.75, 16.75, 3.5, -10.25, -22.25, 0.5, -4.25, -21.75, 0.75, -4.5, -21.75, 0.75, -6.5, -22.25, 0.5, -7.25, -16.25, 0.5, -7.25, -16.25, 0.5, -0.5, -13.5, 0.5, -0.5, -13.5, 0.5, -7.25, -6.75, 3.5, -0.5, -6, 3.5, -1.25, -6.5, 3.5, -1.75, -8.5, 3.5, -2.5, -8.25, 3.5, -0.5, -16.75, 3.5, -6.25, -17.5, 3.25, -6.25, -17.5, 3.25, -4.75, -16.25, 3.5, -4.25, -8.75, 3.5, -4.25, -13.25, 3.5, -4.25, -13.25, 3.5, -2.5, -8.25, 3.5, -4.75, -16.25, 3.5, -0.5, -13.5, 3.5, -0.5, -16.25, 3.5, -7.25, -13.5, 3.5, -7.25, -18.5, 0.5, -6.25, -18.5, 0.5, -4.75, -17.5, 0.5, -4.75, -17.5, 0.5, -6.25, -22.25, 0.5, -3.5, -22.25, 0.5, -0.5, -21.75, 0.5, -0.5, -20.75, 0, -3.5, -20.75, 0, -1.5, -18, 0, -1.5, -18, 0, -3.5, -6.25, 3.5, -0.25, -9.25, 3.5, 3.75, -9.5, 3.5, 5, -7.75, 3.5, 5, -6.75, 3.5, 3.75, -6.25, 3.5, 3.25, -2.5, 3.5, 5.5, -7.5, 3.5, 5.5, 16.75, 0.5, -1.25, 16.75, 0.5, 0, 23.25, 0.5, 0, 23.25, 0.5, -1.25, -15.5, 1.5, 8.75, -15.5, 1.5, 10.5, -13.75, 0.75, 10.5, -13.75, 0.75, 8.75, -8.25, 0.5, 11.5, -2.25, 0.5, 11.5, -2.5, 0.5, 8.75, -8.25, 0.5, 8.75, -13.5, 0.5, 7.75, -13.5, 0.5, 11.5, -17.25, 0.5, 6.25, -17.5, 0.5, -0.25, -19.25, 0.5, -0.25, -19.25, 0.5, 7.5, -19.25, 0.5, 11.75, -19.25, 0.5, 13, -8.5, 0.5, 13, -8.5, 0.5, 6.25, -22.25, 3.5, 13.25, -20.5, 3.5, 13.25, -20.5, 3.5, 11, -17.5, 3.5, 0.75, -19.25, 3.5, 0.75, -19.25, 3.5, 3.25, -17.25, 3.5, 3.75, -20.5, 3.5, 5.5, -20, 3.5, 5, -19.75, 3.5, 3.75, -22.25, 3.5, 3.75, -20, 3.5, 8.75, -20, 3.5, 10.5, -20.5, 3.5, 8.25, -22.25, 0.5, 3.75, -22.25, 0.5, 13.25, -20.5, 0.5, 13.25, -20.5, 0.5, 3.75, -16.25, 0.5, 3.75, -16.25, 0.5, 5, -7.5, 0.5, 5, -7.5, 0.5, 3.75, 16.75, 0, 5, 16.75, 0, 6.5, 23.25, 0, 6.5, 23.25, 0, 5, -0.75, 0.5, 8.75, -0.5, 0.5, 11.5, 6.5, 0.5, 6.75, -0.25, 0.5, 6.75, -0.25, 0.5, 8.25, -0.25, 0.5, 13.25, 6.5, 0.5, 13.25, 16.75, 0.5, 7.75, 16.75, 0.5, 10.5, 23.25, 0.5, 10.5, 23.25, 0.5, 7.75, -19.25, 0.5, 8.75, -19.25, 0.5, 10.5, -17.75, 0.5, 10.5, -17.75, 0.5, 8.75)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(3, 8, 2), PackedInt32Array(2, 8, 7), PackedInt32Array(0, 1, 5), PackedInt32Array(5, 1, 4), PackedInt32Array(7, 8, 6), PackedInt32Array(10, 9, 11), PackedInt32Array(11, 9, 12), PackedInt32Array(13, 15, 14), PackedInt32Array(12, 9, 16), PackedInt32Array(18, 17, 14), PackedInt32Array(14, 17, 13), PackedInt32Array(15, 13, 16), PackedInt32Array(16, 13, 12), PackedInt32Array(22, 21, 19), PackedInt32Array(19, 21, 20), PackedInt32Array(25, 24, 23), PackedInt32Array(11, 26, 10), PackedInt32Array(10, 26, 27), PackedInt32Array(29, 28, 26), PackedInt32Array(26, 28, 27), PackedInt32Array(30, 32, 31), PackedInt32Array(23, 32, 25), PackedInt32Array(25, 32, 30), PackedInt32Array(30, 31, 27), PackedInt32Array(27, 31, 10), PackedInt32Array(36, 35, 33), PackedInt32Array(33, 35, 34), PackedInt32Array(29, 37, 28), PackedInt32Array(28, 37, 38), PackedInt32Array(40, 39, 43), PackedInt32Array(43, 39, 42), PackedInt32Array(43, 42, 38), PackedInt32Array(43, 38, 41), PackedInt32Array(37, 44, 38), PackedInt32Array(38, 44, 41), PackedInt32Array(44, 45, 41), PackedInt32Array(47, 46, 48), PackedInt32Array(48, 46, 49), PackedInt32Array(53, 52, 50), PackedInt32Array(50, 52, 51), PackedInt32Array(55, 54, 56), PackedInt32Array(56, 54, 58), PackedInt32Array(56, 58, 57), PackedInt32Array(60, 59, 61), PackedInt32Array(61, 59, 62), PackedInt32Array(64, 63, 65), PackedInt32Array(65, 63, 57), PackedInt32Array(63, 66, 57), PackedInt32Array(57, 66, 56), PackedInt32Array(56, 66, 18), PackedInt32Array(65, 68, 64), PackedInt32Array(64, 68, 67), PackedInt32Array(64, 67, 62), PackedInt32Array(66, 17, 18), PackedInt32Array(59, 69, 62), PackedInt32Array(62, 69, 70), PackedInt32Array(62, 70, 64), PackedInt32Array(74, 73, 71), PackedInt32Array(71, 73, 72), PackedInt32Array(77, 76, 75), PackedInt32Array(81, 80, 78), PackedInt32Array(78, 80, 79), PackedInt32Array(55, 82, 54), PackedInt32Array(84, 83, 85), PackedInt32Array(85, 83, 86), PackedInt32Array(55, 23, 82), PackedInt32Array(82, 23, 24), PackedInt32Array(82, 24, 87), PackedInt32Array(87, 24, 88), PackedInt32Array(85, 86, 89), PackedInt32Array(89, 86, 87), PackedInt32Array(89, 87, 88), PackedInt32Array(93, 92, 90), PackedInt32Array(90, 92, 91), PackedInt32Array(97, 96, 94), PackedInt32Array(94, 96, 95), PackedInt32Array(101, 100, 98), PackedInt32Array(98, 100, 99), PackedInt32Array(97, 102, 96), PackedInt32Array(96, 102, 103), PackedInt32Array(105, 104, 106), PackedInt32Array(106, 104, 107), PackedInt32Array(108, 103, 109), PackedInt32Array(109, 103, 110), PackedInt32Array(107, 104, 102), PackedInt32Array(102, 104, 111), PackedInt32Array(98, 110, 101), PackedInt32Array(101, 110, 111), PackedInt32Array(111, 110, 103), PackedInt32Array(111, 103, 102), PackedInt32Array(114, 113, 112), PackedInt32Array(116, 115, 117), PackedInt32Array(117, 115, 118), PackedInt32Array(120, 119, 121), PackedInt32Array(121, 119, 122), PackedInt32Array(121, 117, 120), PackedInt32Array(120, 117, 118), PackedInt32Array(124, 123, 95), PackedInt32Array(95, 123, 94), PackedInt32Array(83, 84, 118), PackedInt32Array(118, 84, 120), PackedInt32Array(124, 114, 123), PackedInt32Array(123, 114, 125), PackedInt32Array(119, 125, 122), PackedInt32Array(114, 112, 125), PackedInt32Array(125, 112, 122), PackedInt32Array(129, 128, 126), PackedInt32Array(126, 128, 127), PackedInt32Array(133, 132, 130), PackedInt32Array(130, 132, 131), PackedInt32Array(137, 136, 134), PackedInt32Array(134, 136, 135), PackedInt32Array(139, 99, 138), PackedInt32Array(138, 99, 100), PackedInt32Array(142, 141, 140), PackedInt32Array(138, 142, 139), PackedInt32Array(139, 142, 143), PackedInt32Array(143, 142, 144), PackedInt32Array(144, 142, 140), PackedInt32Array(148, 147, 145), PackedInt32Array(145, 147, 146), PackedInt32Array(152, 151, 149), PackedInt32Array(149, 151, 150)]
+filter_ledge_spans = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2clls"]
+resource_local_to_scene = true
+size = Vector2(4.07, 3.11)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_3d006"]
+points = PackedVector3Array(-7.065, 0, -5.09, -7.065, 0, 5.09, 7.065, 0, -5.09, 7.065, 0, 5.09)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wcg7u"]
+resource_local_to_scene = true
+size = Vector2(14.31, 10.25)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wcg7u"]
+points = PackedVector3Array(-7.155, 0, -5.125, -7.155, 0, 5.125, 7.155, 0, -5.125, 7.155, 0, 5.125)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3d006"]
+resource_local_to_scene = true
+size = Vector2(8.31, 3.43)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2clls"]
+points = PackedVector3Array(-4.155, 0, -1.715, -4.155, 0, 1.715, 4.155, 0, -1.715, 4.155, 0, 1.715)
+
 [node name="MainLevel" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -24,15 +55,282 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6opdx")
 
-[node name="Room" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1.5, 10)
-flip_faces = true
-size = Vector3(8, 3, 8)
-material = ExtResource("1_8xii8")
-
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Room"]
-
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="FloorPlan" type="Sprite3D" parent="."]
 transform = Transform3D(1.764, 0, 0, 0, 1.764, 0, 0, 0, 1.764, 0, 0.1, 0)
+visible = false
 axis = 1
 texture = ExtResource("2_k0okc")
+
+[node name="Pickups" type="Node3D" parent="."]
+
+[node name="BulletPickup" parent="Pickups" instance=ExtResource("3_k6a8t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 4, 13)
+
+[node name="BulletPickup2" parent="Pickups" instance=ExtResource("3_k6a8t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 4, -3)
+
+[node name="SmallBulletPickup" parent="Pickups" instance=ExtResource("4_wcg7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 9)
+
+[node name="SmallBulletPickup2" parent="Pickups" instance=ExtResource("4_wcg7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 1, 5)
+
+[node name="SmallBulletPickup3" parent="Pickups" instance=ExtResource("4_wcg7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 4, -7)
+
+[node name="SmallBulletPickup4" parent="Pickups" instance=ExtResource("4_wcg7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 4, -7)
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("5_2clls")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 1, 9)
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource("5_2clls")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 1, 2)
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource("5_2clls")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 4, 2)
+
+[node name="Enemy4" parent="Enemies" instance=ExtResource("5_2clls")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 4, -5)
+
+[node name="Enemy5" parent="Enemies" instance=ExtResource("5_2clls")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 4, -12)
+
+[node name="Enemy6" parent="Enemies" instance=ExtResource("5_2clls")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 4, -13)
+
+[node name="Enemy7" parent="Enemies" instance=ExtResource("5_2clls")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 4, -1)
+
+[node name="Enemy8" parent="Enemies" instance=ExtResource("5_2clls")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 4, 1)
+
+[node name="Enemy9" parent="Enemies" instance=ExtResource("5_2clls")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 4, -9)
+
+[node name="Enemy10" parent="Enemies" instance=ExtResource("5_2clls")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 4, -9)
+
+[node name="Enemy11" parent="Enemies" instance=ExtResource("5_2clls")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 4, -4)
+
+[node name="Enemy12" parent="Enemies" instance=ExtResource("5_2clls")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 4, -4)
+
+[node name="Enemy13" parent="Enemies" instance=ExtResource("5_2clls")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21, 4, -7)
+
+[node name="Player" parent="." instance=ExtResource("3_6x3q2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 10)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_k6a8t")
+
+[node name="LevelContents" type="Node3D" parent="NavigationRegion3D"]
+
+[node name="Overhang1" type="CSGBox3D" parent="NavigationRegion3D/LevelContents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 1.5, -4)
+use_collision = true
+size = Vector3(5, 3, 8)
+material = ExtResource("1_8xii8")
+
+[node name="Room7" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/Overhang1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+operation = 2
+size = Vector3(4, 3, 10)
+material = ExtResource("1_8xii8")
+
+[node name="Overhang2" type="CSGBox3D" parent="NavigationRegion3D/LevelContents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, -7)
+use_collision = true
+size = Vector3(20, 3, 14)
+material = ExtResource("1_8xii8")
+
+[node name="Room7" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/Overhang2"]
+operation = 2
+size = Vector3(14, 3, 10)
+material = ExtResource("1_8xii8")
+
+[node name="Overhang3" type="CSGBox3D" parent="NavigationRegion3D/LevelContents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1.5, -6.5)
+use_collision = true
+size = Vector3(8, 3, 9)
+material = ExtResource("1_8xii8")
+
+[node name="Overhang4" type="CSGBox3D" parent="NavigationRegion3D/LevelContents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 1.5, 8.5)
+use_collision = true
+size = Vector3(16, 3, 11)
+material = ExtResource("1_8xii8")
+
+[node name="Room7" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/Overhang4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+operation = 2
+size = Vector3(12, 3, 8)
+material = ExtResource("1_8xii8")
+
+[node name="Corridor7" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/Overhang4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, -0.25, -5.5)
+operation = 2
+size = Vector3(3, 2.5, 6)
+material = ExtResource("1_8xii8")
+
+[node name="Corridor8" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/Overhang4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -0.25, 1.5)
+operation = 2
+size = Vector3(8, 2.5, 4)
+material = ExtResource("1_8xii8")
+
+[node name="Rooms" type="CSGBox3D" parent="NavigationRegion3D/LevelContents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, 10)
+use_collision = true
+flip_faces = true
+size = Vector3(8, 6, 8)
+material = ExtResource("1_8xii8")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D/LevelContents/Rooms"]
+
+[node name="Room" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/Rooms/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -1.5)
+flip_faces = true
+size = Vector3(16, 6, 11)
+material = ExtResource("1_8xii8")
+
+[node name="Room2" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/Rooms/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 0, -14)
+flip_faces = true
+size = Vector3(10, 6, 8)
+material = ExtResource("1_8xii8")
+
+[node name="LavaPit" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/Rooms/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5, -3, -12.5)
+flip_faces = true
+size = Vector3(4, 1, 3)
+material = ExtResource("1_8xii8")
+
+[node name="LavaPit2" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/Rooms/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.9926, -3, -4.5)
+flip_faces = true
+size = Vector3(8.02759, 1, 3)
+material = ExtResource("1_8xii8")
+
+[node name="Room3" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/Rooms/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -17)
+flip_faces = true
+size = Vector3(20, 6, 14)
+material = ExtResource("1_8xii8")
+
+[node name="Room4" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/Rooms/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -10.5)
+flip_faces = true
+size = Vector3(8, 6, 23)
+material = ExtResource("1_8xii8")
+
+[node name="Room5" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/Rooms/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -10.5)
+flip_faces = true
+size = Vector3(8, 6, 23)
+material = ExtResource("1_8xii8")
+
+[node name="Corridor" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/Rooms/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 1.25, -17.5)
+flip_faces = true
+size = Vector3(7, 2.5, 3)
+material = ExtResource("1_8xii8")
+
+[node name="Corridor2" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/Rooms/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 1.25, -13.5)
+flip_faces = true
+size = Vector3(6, 2.5, 3)
+material = ExtResource("1_8xii8")
+
+[node name="Corridor7" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/Rooms/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 1.75, -13.5)
+flip_faces = true
+size = Vector3(6, 2.5, 3)
+material = ExtResource("1_8xii8")
+
+[node name="Corridor3" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/Rooms/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -1.75, 0)
+flip_faces = true
+size = Vector3(6, 2.5, 4)
+material = ExtResource("1_8xii8")
+
+[node name="Corridor4" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/Rooms/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 1.25, -7.5)
+flip_faces = true
+size = Vector3(5, 2.5, 7)
+material = ExtResource("1_8xii8")
+
+[node name="Corridor5" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/Rooms/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5, -1.75, -7)
+flip_faces = true
+size = Vector3(3, 2.5, 6)
+material = ExtResource("1_8xii8")
+
+[node name="Corridor6" type="CSGBox3D" parent="NavigationRegion3D/LevelContents/Rooms/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5, 1.25, -7)
+flip_faces = true
+size = Vector3(3, 2.5, 6)
+material = ExtResource("1_8xii8")
+
+[node name="Stairs" type="CSGPolygon3D" parent="NavigationRegion3D/LevelContents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 11)
+use_collision = true
+polygon = PackedVector2Array(-4, 0, -4, 3, 2.86, 0)
+depth = 2.87
+material = ExtResource("1_8xii8")
+
+[node name="Stairs2" type="CSGPolygon3D" parent="NavigationRegion3D/LevelContents"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -21, 0, -7)
+use_collision = true
+polygon = PackedVector2Array(-4, 0, -4, 3, 1, 0)
+depth = 2.87
+material = ExtResource("1_8xii8")
+
+[node name="Stairs3" type="CSGPolygon3D" parent="NavigationRegion3D/LevelContents"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16, 0, 2)
+use_collision = true
+polygon = PackedVector2Array(-4, 0, -4, 3, 2.5, 0)
+depth = 8.0
+material = ExtResource("1_8xii8")
+
+[node name="LavaPools" type="Node3D" parent="."]
+
+[node name="Lava2" parent="LavaPools" instance=ExtResource("7_wcg7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5045, -0.115383, -2.50714)
+
+[node name="MeshInstance3D" parent="LavaPools/Lava2" index="0"]
+mesh = SubResource("PlaneMesh_2clls")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LavaPools/Lava2"]
+shape = SubResource("ConvexPolygonShape3D_3d006")
+
+[node name="OmniLight3D" parent="LavaPools/Lava2" index="2"]
+omni_range = 9.69
+
+[node name="Lava" parent="LavaPools" instance=ExtResource("7_wcg7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.922095, 1.98529, -6.23552)
+
+[node name="MeshInstance3D" parent="LavaPools/Lava" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.155369, 0, -0.737231)
+mesh = SubResource("PlaneMesh_wcg7u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LavaPools/Lava"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.155369, 0, -0.737231)
+shape = SubResource("ConvexPolygonShape3D_wcg7u")
+
+[node name="Lava3" parent="LavaPools" instance=ExtResource("7_wcg7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0072, -0.251057, 5.61602)
+
+[node name="MeshInstance3D" parent="LavaPools/Lava3" index="0"]
+mesh = SubResource("PlaneMesh_3d006")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LavaPools/Lava3"]
+shape = SubResource("ConvexPolygonShape3D_2clls")
+
+[editable path="LavaPools/Lava2"]
+[editable path="LavaPools/Lava"]
+[editable path="LavaPools/Lava3"]
